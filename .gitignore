@@ -1,0 +1,10 @@
+__pycache__
+.env
+.vscode
+.DS_Store
+venv/
+scraping.egg-info
+credenciales.txt
+intento_playwright.txt
+prompts.txt
+urls_casos.txt
