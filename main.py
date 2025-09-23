@@ -1,14 +1,8 @@
-from service_layer.mycase_play_service import login_mycase
+from service_layer.mycase_play_service import login_mycase, download_pdfs_for_case
 
 def main():
-    p, context, page = login_mycase()
-
-    # Aquí continúa tu scraping ya autenticado
-    print("Título actual:", page.title())
-
-    input("Pulsa ENTER para cerrar...")
-    context.close()
-    p.stop()
+    case_id = 41243317  # Ejemplo
+    download_pdfs_for_case(case_id, "Caso_41243317")
 
 if __name__ == "__main__":
     main()
