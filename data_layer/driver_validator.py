@@ -4,6 +4,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 from typing import Optional
 
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
+
 def get_chrome_version() -> Optional[str]:
     """
     Obtiene la versión de Google Chrome instalada.
@@ -17,7 +21,8 @@ def get_chrome_version() -> Optional[str]:
         )
         match = re.search(r"(\d+)\.", result.stdout)
         return match.group(1) if match else None
-    except Exception:
+    except Exception as e:
+        logger.error(f"⚠️  No se pudo obtener la versión de Chrome. Error: {e}")
         return None
 
 def get_chromedriver_version() -> Optional[str]:
@@ -31,11 +36,12 @@ def get_chromedriver_version() -> Optional[str]:
         # Output example: "ChromeDriver 114.0.5735.90 ..."
         match = re.search(r"ChromeDriver (\d+)\.", result.stdout)
         return match.group(1) if match else None
-    except Exception:
+    except Exception as e:
+        logger.error(f"⚠️  No se pudo obtener la versión de ChromeDriver. Error: {e}")
         return None
 
 def validate_versions() -> bool:
     chrome_ver = get_chrome_version() 
     driver_ver = get_chromedriver_version()
-    print(f"🔎 Chrome instalado: {chrome_ver}, ChromeDriver: {driver_ver}")
+    logger.info(f"🔎 Chrome instalado: {chrome_ver}, ChromeDriver: {driver_ver}")
     return chrome_ver == driver_ver
