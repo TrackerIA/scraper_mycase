@@ -27,9 +27,11 @@ def select_text_message(page: Page, case_id: int, message: str = "hola"):
     page.fill('textarea[name="message-textarea"]', message)
     print(f"✍️  Escribí '{message}' en el chat.")
 
-    # 5️⃣ (Opcional) Hacer clic en el botón de enviar si existe
+    # 5️⃣ Enviar el mensaje presionando Enter
     try:
-        page.click('button[type="submit"]')
-        print("✅ Mensaje enviado.")
-    except Exception:
-        print(f"ℹ️ No se encontró botón de enviar, solo se escribió '{message}'.")
+        page.press('textarea[name="message-textarea"]', "Enter")
+        print("✅ Mensaje enviado con Enter.")
+    except Exception as e:
+        print(f"⚠️ No se pudo enviar el mensaje con Enter: {e}")
+
+    sleep(2)  # Pequeña pausa para estabilidad
