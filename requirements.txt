@@ -1,2 +1,26 @@
-selenium
-webdriver-manager
+# ============================================
+# ⚙️ Core Python Tools
+# ============================================
+python-dotenv==1.0.1
+requests==2.32.3
+pathlib==1.0.1
+
+# ============================================
+# 🧠 Data Processing
+# ============================================
+polars==1.6.0
+
+# ============================================
+# 🤖 Playwright (automatización de navegador)
+# ============================================
+playwright==1.48.0
+
+# ============================================
+# 🧩 Otros utilitarios
+# ============================================
+tqdm==4.66.4
+tenacity==9.0.0        # reintentos automáticos robustos
+loguru==0.7.2          # logging elegante (opcional)
+aiofiles==23.2.1       # manejo async de archivos (si FastAPI lo usa)
+
+python-dotenv==1.0.1
